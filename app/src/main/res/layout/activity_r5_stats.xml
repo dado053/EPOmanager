@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="R5 - Βαθμολογία και Στατιστικά"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="12dp" />
+
+        <TextView
+            android:id="@+id/titleChampionship"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Πρωτάθλημα"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingBottom="6dp" />
+
+        <Spinner
+            android:id="@+id/spinnerChampionships"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Βαθμολογία Ομάδων"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="12dp"
+            android:paddingBottom="6dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/standingsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ομαδικά Στατιστικά"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="22dp"
+            android:paddingBottom="6dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/teamStatsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ατομικά Στατιστικά Παικτών"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="22dp"
+            android:paddingBottom="6dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/playerStatsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+</ScrollView>
