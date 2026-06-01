@@ -5,10 +5,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,7 +38,10 @@ public class MatchCardActivity extends AppCompatActivity {
         Button btnOpenStats = findViewById(R.id.btnOpenStats);
         Button btnEdit = findViewById(R.id.btnEdit);
         recyclerView = findViewById(R.id.recyclerViewPlayers);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Γραφική απεικόνιση σε πλέγμα 2 στηλών
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
         apiService = RetrofitClient.getClient().create(ApiService.class);
 
         btnHome.setText(getIntent().getStringExtra("HOME_TEAM_NAME"));
@@ -65,7 +69,6 @@ public class MatchCardActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-
         btnEdit.setOnClickListener(v -> {
             Intent intent = new Intent(MatchCardActivity.this, RecordStatsActivity.class);
             intent.putExtra("MATCH_ID", matchId);
@@ -76,6 +79,7 @@ public class MatchCardActivity extends AppCompatActivity {
             intent.putExtra("SELECTED_TEAM_ID", currentSelectedTeamId);
             startActivity(intent);
         });
+
         if (isAdmin) {
             btnEdit.setVisibility(View.VISIBLE);
         } else {
@@ -91,9 +95,42 @@ public class MatchCardActivity extends AppCompatActivity {
             public void onResponse(Call<List<Player>> call, Response<List<Player>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Player> players = response.body();
+
+                    // 1. Ορίζουμε πρώτα ποιοι είναι βασικοί (οι πρώτοι 11 που έρχονται από τη βάση)
                     for (int i = 0; i < players.size(); i++) {
-                        if (i < 11) players.get(i).setStartingEleven(true);
+                        if (i < 11) {
+                            players.get(i).setStartingEleven(true);
+                        } else {
+                            players.get(i).setStartingEleven(false);
+                        }
                     }
+
+                    // 2. ΤΑΞΙΝΟΜΗΣΗ (Βασικοί Πάνω -> Μετά Ταξινόμηση ανά Θέση)
+                    Collections.sort(players, new Comparator<Player>() {
+                        @Override
+                        public int compare(Player p1, Player p2) {
+                            // Πρώτος Κανόνας: Οι βασικοί μπαίνουν πάνω από τον πάγκο
+                            if (p1.isStartingEleven() && !p2.isStartingEleven()) return -1;
+                            if (!p1.isStartingEleven() && p2.isStartingEleven()) return 1;
+
+                            // Δεύτερος Κανόνας: Αν είναι και οι δύο βασικοί (ή πάγκος), ταξινομούμε ανά θέση
+                            return getPositionWeight(p1.getPosition()) - getPositionWeight(p2.getPosition());
+                        }
+
+                        // Μέθοδος που δίνει το "βάρος" στη θέση για τη σωστή σειρά
+                        private int getPositionWeight(String position) {
+                            if (position == null) return 5;
+                            switch (position) {
+                                case "Τερματοφύλακας": return 1;
+                                case "Αμυντικός": return 2;
+                                case "Μέσος": return 3;
+                                case "Επιθετικός": return 4;
+                                default: return 5;
+                            }
+                        }
+                    });
+
+                    // 3. Στέλνουμε την ταξινομημένη λίστα στον Adapter
                     adapter = new PlayerAdapter(MatchCardActivity.this, players, matchId, teamId);
                     recyclerView.setAdapter(adapter);
                 }
