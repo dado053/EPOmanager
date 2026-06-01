@@ -15,6 +15,8 @@ public interface ApiService {
     @GET("api_get_championships.php")
     Call<List<Championship>> getChampionship();
 
+    @GET("api_get_championships.php")
+    Call<List<ChampionshipActivity.ChampionshipModel>> getChampionships();
     @GET("get_match_events.php")
     Call<List<MatchEvent>> getMatchEvents(
             @Query("match_id") int matchId);

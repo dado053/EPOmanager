@@ -23,11 +23,14 @@ public class MatchCardActivity extends AppCompatActivity {
     private PlayerAdapter adapter;
     private ApiService apiService;
 
+    private boolean isAdmin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_card);
-        boolean isAdmin = getIntent().getBooleanExtra("IS_ADMIN", false);
+        isAdmin = getSharedPreferences("user_session", MODE_PRIVATE)
+                .getBoolean("IS_ADMIN", false);
 
         matchId = getIntent().getIntExtra("MATCH_ID", -1);
         homeTeamId = getIntent().getIntExtra("HOME_TEAM_ID", -1);

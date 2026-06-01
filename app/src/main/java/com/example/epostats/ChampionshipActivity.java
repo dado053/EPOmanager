@@ -24,6 +24,7 @@ public class ChampionshipActivity extends AppCompatActivity {
 
     private RecyclerView recyclerChampionships;
     private ChampionshipAdapter adapter;
+    //private boolean isAdmin;
 
     // Ενσωματώνουμε το API Call απευθείας εδώ (όπως είχες κάνει στο R5StatsActivity)
     interface ChampionshipApi {
@@ -42,6 +43,9 @@ public class ChampionshipActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_championship);
+
+        Intent intent = getIntent();
+        //isAdmin = intent.getBooleanExtra("IS_ADMIN", false);
 
         recyclerChampionships = findViewById(R.id.recycler_championships);
         recyclerChampionships.setLayoutManager(new LinearLayoutManager(this));
@@ -80,8 +84,9 @@ public class ChampionshipActivity extends AppCompatActivity {
     // Εσωτερικός Adapter για να διαχειρίζεται το UI της κάθε κάρτας
     private static class ChampionshipAdapter extends RecyclerView.Adapter<ChampionshipAdapter.ViewHolder> {
         private final List<ChampionshipModel> list;
-
+        //private final boolean isAdmin;
         ChampionshipAdapter(List<ChampionshipModel> list) {
+            //this.isAdmin = isAdmin;
             this.list = list;
         }
 
@@ -104,6 +109,7 @@ public class ChampionshipActivity extends AppCompatActivity {
                 // ΠΑΡΑΔΕΙΓΜΑ:
                  Intent intent = new Intent(v.getContext(), MainActivity.class);
                  intent.putExtra("CHAMPIONSHIP_ID", champ.id);
+                 //intent.putExtra("IS_ADMIN", isAdmin);
                  v.getContext().startActivity(intent);
 
             });

@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MatchAdapter adapter;
     TextView tvWelcome;
-    Button btnAdmin;
+    boolean isAdmin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +29,13 @@ public class MainActivity extends AppCompatActivity {
 //        String username = getIntent().getStringExtra("USERNAME");
 //        boolean isAdmin = getIntent().getBooleanExtra("IS_ADMIN", false);
         //tvWelcome.setText("Welcome " + username);
+        isAdmin = getIntent().getBooleanExtra("IS_ADMIN",false);
 
+        if (isAdmin) {
+            // admin features
+        } else {
+            // guest features
+        }
         recyclerView = findViewById(R.id.recyclerViewMatches);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fetchMatches();

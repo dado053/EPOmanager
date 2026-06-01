@@ -1,4 +1,5 @@
 package com.example.epostats;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
@@ -16,10 +17,12 @@ import android.widget.Button;
 public class LoginActivity extends AppCompatActivity {
 
     EditText etUsername, etPassword;
-    Button btnLogin;
+    Button btnLoginAdmin;
+    Button btnLoginGuest;
 
     private final String ADMIN_PASSWORD = "admin123";
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,27 +30,50 @@ public class LoginActivity extends AppCompatActivity {
 
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
-        btnLogin = findViewById(R.id.btnLogin);
+        btnLoginAdmin = findViewById(R.id.btnLoginAdmin);
+        btnLoginGuest = findViewById(R.id.btnLoginGuest);
 
-        btnLogin.setOnClickListener(v -> login());
+        btnLoginAdmin.setOnClickListener(v -> loginAdmin());
+        btnLoginGuest.setOnClickListener(v -> {
+
+            getSharedPreferences("user_session", MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("IS_ADMIN", false)
+                    .apply();
+
+            Intent intent = new Intent(LoginActivity.this, ChampionshipActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
-    private void login() {
+    private void loginAdmin() {
 
         String username = etUsername.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
-        if(username.isEmpty()) {
+        if (username.isEmpty()) {
             Toast.makeText(this, "Enter username", Toast.LENGTH_SHORT).show();
             return;
         }
 
         boolean isAdmin = password.equals("admin123");
 
-        Intent intent = new Intent(LoginActivity.this, ChampionshipActivity.class);
-        intent.putExtra("USERNAME", username);
-        intent.putExtra("IS_ADMIN", isAdmin);
+        if (!isAdmin) {
+            Toast.makeText(this, "Invalid Password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Toast.makeText(this,
+                "Admin: " + isAdmin,
+                Toast.LENGTH_LONG).show();
+        // Save session
+        getSharedPreferences("user_session", MODE_PRIVATE)
+                .edit()
+                .putBoolean("IS_ADMIN", true)
+                .putString("USERNAME", username)
+                .apply();
 
+        Intent intent = new Intent(LoginActivity.this, ChampionshipActivity.class);
         startActivity(intent);
         finish();
     }

@@ -20,9 +20,15 @@
         android:inputType="textPassword"/>
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnLoginAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"/>
+        android:text="Login as Admin"/>
+
+    <Button
+        android:id="@+id/btnLoginGuest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login as Guest"/>
 
 </LinearLayout>
