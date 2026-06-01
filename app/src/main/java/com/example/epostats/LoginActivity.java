@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
         boolean isAdmin = password.equals("admin123");
 
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        Intent intent = new Intent(LoginActivity.this, ChampionshipActivity.class);
         intent.putExtra("USERNAME", username);
         intent.putExtra("IS_ADMIN", isAdmin);
 
