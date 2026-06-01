@@ -11,6 +11,10 @@ import retrofit2.http.Query;
 public interface ApiService {
     @GET("get_matches.php")
     Call<List<Match>> getMatches();
+
+    @GET("api_get_championships.php")
+    Call<List<Championship>> getChampionship();
+
     @GET("get_match_events.php")
     Call<List<MatchEvent>> getMatchEvents(
             @Query("match_id") int matchId);
