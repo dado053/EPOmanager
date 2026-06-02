@@ -1,4 +1,4 @@
-package com.example.epostats;
+package com.example.epostats.adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -12,6 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.epostats.network.ApiResponse;
+import com.example.epostats.network.ApiService;
+import com.example.epostats.models.Player;
+import com.example.epostats.R;
+import com.example.epostats.network.RetrofitClient;
+
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;

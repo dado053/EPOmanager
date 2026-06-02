@@ -1,4 +1,4 @@
-package com.example.epostats;
+package com.example.epostats.adapters;
 
 import android.content.Intent;
 import android.os.Bundle;

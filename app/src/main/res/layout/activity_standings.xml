@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#04151F"> <com.google.android.material.tabs.TabLayout
+    android:id="@+id/tabLayoutStandings"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#0A2230"
+    app:tabTextColor="#85A2B6"
+    app:tabSelectedTextColor="#FFFFFF"
+    app:tabIndicatorColor="#E53935"
+    app:tabIndicatorHeight="3dp"
+    app:tabMode="fixed"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layoutStandings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="#0A2230">
+                <TextView android:layout_width="30dp" android:layout_height="wrap_content" android:text="#" android:textColor="#85A2B6" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ΟΜΑΔΑ" android:textColor="#85A2B6" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="40dp" android:layout_height="wrap_content" android:text="Β" android:textColor="#85A2B6" android:textSize="12sp" android:textStyle="bold" android:textAlignment="center"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStandings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutScorers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="#0A2230">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="ΠΑΙΚΤΗΣ" android:textColor="#85A2B6" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="60dp" android:layout_height="wrap_content" android:text="ΟΜΑΔΑ" android:textColor="#85A2B6" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="30dp" android:layout_height="wrap_content" android:text="Γ" android:textColor="#85A2B6" android:textSize="12sp" android:textStyle="bold" android:textAlignment="center"/>
+                <TextView android:layout_width="30dp" android:layout_height="wrap_content" android:text="Α" android:textColor="#85A2B6" android:textSize="12sp" android:textStyle="bold" android:textAlignment="center"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvScorers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

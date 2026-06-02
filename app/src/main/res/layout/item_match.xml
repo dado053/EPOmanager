@@ -3,69 +3,75 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#04151F"
+    android:paddingHorizontal="12dp">
 
     <TextView
         android:id="@+id/tvMatchdayHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E8EAF6"
-        android:padding="10dp"
-        android:text="Αγωνιστική X"
-        android:textAlignment="center"
-        android:textColor="#1A73E8"
-        android:textSize="18sp"
+        android:textColor="#E53935"
+        android:textSize="14sp"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="12dp"
+        android:background="@drawable/bg_matchday_header"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:letterSpacing="0.05"
         android:visibility="gone"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginVertical="6dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="2dp">
+        android:layout_marginVertical="5dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#0A2230">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="18dp"
-            android:gravity="center_vertical"
-            android:weightSum="3"
-            android:background="#FFFFFF">
+            android:gravity="center"
+            android:weightSum="3">
 
             <TextView
                 android:id="@+id/textHomeTeam"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.2"
-                android:textAlignment="viewEnd"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:textColor="#222222"
-                android:textSize="16sp"/>
+                android:textSize="15sp"
+                android:gravity="end"
+                android:maxLines="1"
+                android:ellipsize="end"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
                 android:text="VS"
-                android:textAlignment="center"
-                android:textColor="#AAAAAA"
-                android:textStyle="italic"
-                android:textSize="16sp"/>
+                android:textColor="#85A2B6"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/textAwayTeam"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.2"
-                android:textAlignment="viewStart"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:textColor="#222222"
-                android:textSize="16sp"/>
+                android:textSize="15sp"
+                android:gravity="start"
+                android:maxLines="1"
+                android:ellipsize="end"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

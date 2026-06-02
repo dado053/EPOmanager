@@ -1,4 +1,4 @@
-package com.example.epostats;
+package com.example.epostats.activities;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.epostats.network.ApiService;
+import com.example.epostats.models.Player;
+import com.example.epostats.R;
+import com.example.epostats.network.RetrofitClient;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

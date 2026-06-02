@@ -1,4 +1,4 @@
-package com.example.epostats;
+package com.example.epostats.activities;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.epostats.R;
 
 import java.util.ArrayList;
 import java.util.List;

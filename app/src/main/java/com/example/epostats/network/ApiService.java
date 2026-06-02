@@ -1,4 +1,10 @@
-package com.example.epostats;
+package com.example.epostats.network;
+
+import com.example.epostats.models.Championship;
+import com.example.epostats.models.Match;
+import com.example.epostats.models.MatchEvent;
+import com.example.epostats.models.Player;
+import com.example.epostats.network.ApiResponse;
 
 import java.util.List;
 import retrofit2.Call;
@@ -10,7 +16,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
     @GET("get_matches.php")
-    Call<List<Match>> getMatches();
+    Call<List<Match>> getMatches(@Query("championship_id") int championshipId);
 
     @GET("api_get_championships.php")
     Call<List<Championship>> getChampionship();

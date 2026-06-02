@@ -3,33 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="8dp"
-    android:layout_marginHorizontal="4dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="3dp">
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="#0A2230">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="20dp"
-        android:background="#FFFFFF"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:padding="18dp">
 
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@android:drawable/ic_menu_myplaces"
-            android:layout_marginEnd="16dp"
-            app:tint="#1a73e8"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🏆"
+            android:textSize="18sp"
+            android:layout_marginRight="14dp"/>
 
         <TextView
             android:id="@+id/tv_champ_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Super League 2026"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#222222"/>
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

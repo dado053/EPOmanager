@@ -1,4 +1,4 @@
-package com.example.epostats;
+package com.example.epostats.network;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

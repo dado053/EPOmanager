@@ -1,4 +1,4 @@
-package com.example.epostats;
+package com.example.epostats.network;
 
 public class ApiResponse {
     private String status;

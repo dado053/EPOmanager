@@ -1,29 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F0F0">
-
-    <Button
-        android:id="@+id/btnR5Stats"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="8dp"
-        android:text="Βαθμολογία &amp; Στατιστικά R5" />
+    android:orientation="vertical"
+    android:background="#04151F">
 
     <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:textSize="24sp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMatches"
+        android:id="@+id/tvChampionshipTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/btnR5Stats"
-        android:padding="8dp" />
+        android:layout_height="wrap_content"
+        android:text="Πρωτάθλημα"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingVertical="16dp"
+        android:background="#0A2230"
+        android:elevation="4dp"
+        android:layout_marginBottom="16dp"/>
 
-</RelativeLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMatches"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="6dp"/>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btnOpenStandings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ΒΑΘΜΟΛΟΓΙΑ"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#2E7D32"
+        android:textStyle="bold"
+        android:layout_margin="12dp"
+        android:padding="12dp"
+        android:elevation="4dp"/>
+</LinearLayout>

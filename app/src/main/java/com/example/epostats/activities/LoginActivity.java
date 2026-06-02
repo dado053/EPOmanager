@@ -1,17 +1,13 @@
-package com.example.epostats;
+package com.example.epostats.activities;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
 import android.content.Intent;
 import android.widget.Button;
+
+import com.example.epostats.R;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -1,8 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/eventText"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp"
-    android:textSize="16sp"/>
+    android:orientation="vertical"
+    android:background="#04151F">
+
+    <RelativeLayout
+        android:id="@+id/layoutHalfHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0A2230"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
+        android:visibility="gone"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvHalfHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:textColor="#85A2B6"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvHalfHeaderScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutEventBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="16dp">
+
+        <LinearLayout
+            android:id="@+id/layoutHomeEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView android:id="@+id/tvMinHome" android:layout_width="35dp" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp"/>
+            <TextView android:id="@+id/tvIconHome" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:layout_marginEnd="10dp"/>
+            <TextView android:id="@+id/tvPrimaryHome" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp"/>
+            <TextView android:id="@+id/tvSecondaryHome" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#85A2B6" android:textSize="13sp" android:layout_marginStart="6dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutAwayEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView android:id="@+id/tvSecondaryAway" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#85A2B6" android:textSize="13sp" android:layout_marginEnd="6dp"/>
+            <TextView android:id="@+id/tvPrimaryAway" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp"/>
+            <TextView android:id="@+id/tvIconAway" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:layout_marginStart="10dp"/>
+            <TextView android:id="@+id/tvMinAway" android:layout_width="35dp" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:layout_marginStart="10dp" android:textAlignment="viewEnd"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

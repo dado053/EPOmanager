@@ -3,25 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F0F3F4"
-    android:padding="16dp">
+    android:background="#04151F">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Επιλογή Πρωταθλήματος"
-        android:textSize="22sp"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#333333"
         android:gravity="center"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="10dp"/>
+        android:paddingVertical="20dp"
+        android:background="#0A2230"
+        android:elevation="4dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_championships"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="20dp"/>
-
+        android:padding="8dp"/>
 </LinearLayout>

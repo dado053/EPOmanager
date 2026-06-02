@@ -1,4 +1,4 @@
-package com.example.epostats;
+package com.example.epostats.models;
 
 
 import com.google.gson.annotations.SerializedName;

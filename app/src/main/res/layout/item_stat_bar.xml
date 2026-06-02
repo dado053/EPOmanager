@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingVertical="6dp"
+    android:background="#04151F">
+
+    <!-- ΚΑΤΗΓΟΡΙΑ (Εμφανίζεται μόνο αν είναι Header, π.χ. ΕΠΙΘΕΣΗ) -->
+    <TextView
+        android:id="@+id/tvCategoryHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#85A2B6"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="4dp"
+        android:background="#0A2230"
+        android:letterSpacing="0.1"
+        android:visibility="gone"
+        android:text="ΕΠΙΘΕΣΗ"/>
+
+    <!-- ΚΥΡΙΩΣ ΣΩΜΑ ΣΤΑΤΙΣΤΙΚΟΥ -->
+    <LinearLayout
+        android:id="@+id/layoutStatBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="4dp">
+
+        <!-- Κείμενα και Τιμές -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="4dp">
+
+            <TextView
+                android:id="@+id/tvHomeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:text="0"/>
+
+            <TextView
+                android:id="@+id/tvStatTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="#85A2B6"
+                android:textSize="13sp"
+                android:text="Κατοχή Μπάλας"/>
+
+            <TextView
+                android:id="@+id/tvAwayValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:text="0"/>
+        </RelativeLayout>
+
+        <!-- ΟΙ ΔΥΝΑΜΙΚΕΣ ΜΠΑΡΕΣ (FLASHSCORE STYLE) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp"
+            android:weightSum="200"
+            android:background="#0A2230"> <!-- Το "κανάλι" background της μπάρας -->
+
+            <!-- Αριστερή Μπάρα (Γηπεδούχος) -->
+            <View
+                android:id="@+id/spacerHome"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"/>
+
+            <View
+                android:id="@+id/barHome"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@drawable/bar_home"/>
+
+            <!-- Δεξιά Μπάρα (Φιλοξενούμενος) -->
+            <View
+                android:id="@+id/barAway"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@drawable/bar_away"/>
+
+            <View
+                android:id="@+id/spacerAway"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

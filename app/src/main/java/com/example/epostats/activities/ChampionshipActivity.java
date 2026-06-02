@@ -1,4 +1,4 @@
-package com.example.epostats;
+package com.example.epostats.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.epostats.R;
+import com.example.epostats.network.RetrofitClient;
 
 import java.util.List;
 
@@ -99,11 +102,12 @@ public class ChampionshipActivity extends AppCompatActivity {
 
             // Τι συμβαίνει όταν πατάς πάνω σε ένα πρωτάθλημα
             holder.itemView.setOnClickListener(v -> {
-                Toast.makeText(v.getContext(), "Άνοιγμα: " + champ.name, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(v.getContext(), "Άνοιγμα: " + champ.name, Toast.LENGTH_SHORT).show();
 
                 // ΠΑΡΑΔΕΙΓΜΑ:
                  Intent intent = new Intent(v.getContext(), MainActivity.class);
                  intent.putExtra("CHAMPIONSHIP_ID", champ.id);
+                 intent.putExtra("CHAMPIONSHIP_NAME", champ.name);
                  v.getContext().startActivity(intent);
 
             });

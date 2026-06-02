@@ -1,11 +1,11 @@
-package com.example.epostats;
+package com.example.epostats.models;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Match {
     @SerializedName("match_id")
     private int matchId;
 
-    // ΠΡΟΣΘΗΚΗ: Τραβάμε την αγωνιστική από το PHP
     @SerializedName("matchday")
     private int matchday;
 
@@ -22,7 +22,7 @@ public class Match {
     private int awayTeamId;
 
     public int getMatchId() { return matchId; }
-    public int getMatchday() { return matchday; } // ΠΡΟΣΘΗΚΗ
+    public int getMatchday() { return matchday; }
     public String getHomeTeamName() { return homeTeamName; }
     public String getAwayTeamName() { return awayTeamName; }
     public int getHomeTeamId() { return homeTeamId; }
