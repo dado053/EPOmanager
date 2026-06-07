@@ -23,4 +23,7 @@ public class MatchEvent {
     public String getActionResult() { return actionResult; }
     public String getPlayerName() { return playerName; }
     public String getAssistPlayerName() { return assistPlayerName; }
+
+    private long startTime;
+    public long getStartTime() { return startTime; }
 }

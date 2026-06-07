@@ -28,14 +28,29 @@ public interface ApiService {
     Call<List<Player>> getTeamPlayers(@Query("team_id") int teamId);
 
     @FormUrlEncoded
-    @POST("api_add_event.php")
+    @POST("api_add_event.php") // Ή όπως λέγεται το δικό σου endpoint για προσθήκη event
     Call<ApiResponse> addMatchEvent(
             @Field("match_id") int matchId,
             @Field("team_id") int teamId,
-            @Field("event_minute") int minute,
-            @Field("action_type") String type,
-            @Field("action_detail") String detail,
-            @Field("action_result") String result,
+            @Field("event_minute") String eventMinute,
+            @Field("action_type") String actionType,
+            @Field("action_detail") String actionDetail,
+            @Field("action_result") String actionResult,
             @Field("player_id") int playerId
+    );
+
+    @FormUrlEncoded
+    @POST("api_start_match.php")
+    Call<ApiResponse> startMatchTimer(
+            @Field("match_id") int matchId,
+            @Field("start_time") long startTime
+    );
+
+    @FormUrlEncoded
+    @POST("api_update_injury_time.php")
+    Call<ApiResponse> updateInjuryTime(
+            @Field("match_id") int matchId,
+            @Field("injury_1st_half") int injury1st,
+            @Field("injury_2nd_half") int injury2nd
     );
 }

@@ -27,15 +27,13 @@ public class ChampionshipActivity extends AppCompatActivity {
 
     private RecyclerView recyclerChampionships;
     private ChampionshipAdapter adapter;
+    private boolean isAdmin = false; // Μεταβλητή για να αποθηκεύσουμε το ρόλο
 
-    // Ενσωματώνουμε το API Call απευθείας εδώ (όπως είχες κάνει στο R5StatsActivity)
     interface ChampionshipApi {
-        // ΣΗΜΕΙΩΣΗ: Αν το αρχείο PHP είναι μέσα σε φάκελο (π.χ. epo_project), άλλαξέ το εδώ
         @GET("api_get_championships.php")
         Call<List<ChampionshipModel>> getChampionships();
     }
 
-    // Το Model των δεδομένων (ίδιο με τα πεδία της βάσης σου)
     static class ChampionshipModel {
         int id;
         String name;
@@ -45,6 +43,9 @@ public class ChampionshipActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_championship);
+
+        // ΔΙΟΡΘΩΣΗ: Διαβάζουμε αν ο χρήστης είναι admin από το LoginActivity
+        isAdmin = getIntent().getBooleanExtra("IS_ADMIN", false);
 
         recyclerChampionships = findViewById(R.id.recycler_championships);
         recyclerChampionships.setLayoutManager(new LinearLayoutManager(this));
@@ -65,8 +66,8 @@ public class ChampionshipActivity extends AppCompatActivity {
                         return;
                     }
 
-                    // Τροφοδοτούμε τη λίστα στον Adapter
-                    adapter = new ChampionshipAdapter(list);
+                    // ΔΙΟΡΘΩΣΗ: Περνάμε το isAdmin στον Adapter
+                    adapter = new ChampionshipAdapter(list, isAdmin);
                     recyclerChampionships.setAdapter(adapter);
                 } else {
                     Toast.makeText(ChampionshipActivity.this, "Σφάλμα ανάγνωσης δεδομένων (Code: " + response.code() + ")", Toast.LENGTH_SHORT).show();
@@ -80,12 +81,14 @@ public class ChampionshipActivity extends AppCompatActivity {
         });
     }
 
-    // Εσωτερικός Adapter για να διαχειρίζεται το UI της κάθε κάρτας
     private static class ChampionshipAdapter extends RecyclerView.Adapter<ChampionshipAdapter.ViewHolder> {
         private final List<ChampionshipModel> list;
+        private final boolean isAdmin; // Κρατάμε την κατάσταση admin στον adapter
 
-        ChampionshipAdapter(List<ChampionshipModel> list) {
+        // ΔΙΟΡΘΩΣΗ: Ενημέρωση του constructor
+        ChampionshipAdapter(List<ChampionshipModel> list, boolean isAdmin) {
             this.list = list;
+            this.isAdmin = isAdmin;
         }
 
         @NonNull
@@ -100,16 +103,15 @@ public class ChampionshipActivity extends AppCompatActivity {
             ChampionshipModel champ = list.get(position);
             holder.tvName.setText(champ.name);
 
-            // Τι συμβαίνει όταν πατάς πάνω σε ένα πρωτάθλημα
             holder.itemView.setOnClickListener(v -> {
-                //Toast.makeText(v.getContext(), "Άνοιγμα: " + champ.name, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                intent.putExtra("CHAMPIONSHIP_ID", champ.id);
+                intent.putExtra("CHAMPIONSHIP_NAME", champ.name);
 
-                // ΠΑΡΑΔΕΙΓΜΑ:
-                 Intent intent = new Intent(v.getContext(), MainActivity.class);
-                 intent.putExtra("CHAMPIONSHIP_ID", champ.id);
-                 intent.putExtra("CHAMPIONSHIP_NAME", champ.name);
-                 v.getContext().startActivity(intent);
+                // ΔΙΟΡΘΩΣΗ: Εδώ προωθούμε πλέον με ασφάλεια το IS_ADMIN στη MainActivity!
+                intent.putExtra("IS_ADMIN", isAdmin);
 
+                v.getContext().startActivity(intent);
             });
         }
 

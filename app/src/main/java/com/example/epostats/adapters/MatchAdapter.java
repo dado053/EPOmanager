@@ -13,6 +13,7 @@ import com.example.epostats.models.Match;
 import com.example.epostats.R;
 import com.example.epostats.activities.MainActivity;
 import com.example.epostats.activities.StatsActivity;
+import com.example.epostats.activities.RecordStatsActivity; // Προσθήκη του import για την Admin οθόνη
 
 import java.util.List;
 
@@ -58,16 +59,29 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.MatchViewHol
         }
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, StatsActivity.class);
+            // 1. Ελέγχουμε αν ο χρήστης είναι admin τραβώντας την πληροφορία από το Intent της MainActivity
+            boolean isAdmin = false;
+            if (context instanceof MainActivity) {
+                isAdmin = ((MainActivity) context).getIntent().getBooleanExtra("IS_ADMIN", false);
+            }
+
+            Intent intent;
+            if (isAdmin) {
+                // ΑΝ ΕΙΝΑΙ ΔΙΑΧΕΙΡΙΣΤΗΣ: Ανοίγει το PDA καταγραφής (R1-R2)
+                intent = new Intent(context, RecordStatsActivity.class);
+            } else {
+                // ΑΝ ΕΙΝΑΙ ΑΠΛΟΣ ΧΡΗΣΤΗΣ: Ανοίγει το κλασικό Match Center (R3-R5)
+                intent = new Intent(context, StatsActivity.class);
+            }
+
+            // 2. Περνάμε όλα τα απαραίτητα Extras που χρειάζονται και οι δύο οθόνες
             intent.putExtra("MATCH_ID", match.getMatchId());
             intent.putExtra("HOME_TEAM_ID", match.getHomeTeamId());
             intent.putExtra("AWAY_TEAM_ID", match.getAwayTeamId());
             intent.putExtra("HOME_TEAM_NAME", match.getHomeTeamName());
             intent.putExtra("AWAY_TEAM_NAME", match.getAwayTeamName());
+            intent.putExtra("IS_ADMIN", isAdmin);
 
-            if (context instanceof MainActivity) {
-                intent.putExtra("IS_ADMIN", ((MainActivity) context).getIntent().getBooleanExtra("IS_ADMIN", false));
-            }
             context.startActivity(intent);
         });
     }
